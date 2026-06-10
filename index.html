@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Heroes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Title screen -->
+<section id="screen-title" class="screen active">
+  <h1 class="game-title">Math Heroes</h1>
+  <div class="title-chars" id="title-chars"></div>
+  <p class="tagline">Add and subtract with your favorite heroes!</p>
+  <button id="btn-play" class="big-btn">Play!</button>
+</section>
+
+<!-- Map screen -->
+<section id="screen-map" class="screen">
+  <h2 class="map-title">Choose your world</h2>
+  <div class="difficulty-row" id="difficulty-row"></div>
+  <div class="map-board-wrapper">
+    <div class="map-board" id="map-board">
+      <svg class="map-svg" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid slice">
+        <g transform="translate(0, 100)">
+          <!-- River -->
+          <path d="M 680 -20 C 700 80, 660 130, 680 170 C 700 210, 350 210, 280 230 C 210 250, 160 250, 180 300 C 200 350, 160 480, 180 570" fill="none" stroke="#5ccbf5" stroke-width="26" stroke-linecap="round"/>
+          <path d="M 680 -20 C 700 80, 660 130, 680 170 C 700 210, 350 210, 280 230 C 210 250, 160 250, 180 300 C 200 350, 160 480, 180 570" fill="none" stroke="#aee2ff" stroke-width="12" stroke-linecap="round"/>
+          
+          <!-- Winding Dirt Path (Serpentine S-Curve) -->
+          <path class="map-path-shadow" d="M 50 110 L 100 110 Q 160 125 220 140 Q 280 125 340 110 Q 400 125 460 140 Q 520 125 580 110 C 660 90 730 140 760 200 Q 700 220 640 240 Q 580 220 520 200 Q 460 220 400 240 Q 340 220 280 200 C 190 180 120 280 110 350 Q 170 370 230 390 Q 290 370 350 350 Q 410 370 470 390 Q 530 370 590 350 C 650 330 700 365 730 380 L 850 380" fill="none" stroke="#75471d" stroke-width="24" stroke-linecap="round"/>
+          <path class="map-path-body" d="M 50 110 L 100 110 Q 160 125 220 140 Q 280 125 340 110 Q 400 125 460 140 Q 520 125 580 110 C 660 90 730 140 760 200 Q 700 220 640 240 Q 580 220 520 200 Q 460 220 400 240 Q 340 220 280 200 C 190 180 120 280 110 350 Q 170 370 230 390 Q 290 370 350 350 Q 410 370 470 390 Q 530 370 590 350 C 650 330 700 365 730 380 L 850 380" fill="none" stroke="#dcb07c" stroke-width="14" stroke-linecap="round"/>
+          
+          <!-- Dotted Continuation Path -->
+          <path class="map-path-dotted" d="M 850 380 C 890 380 920 380 970 380" fill="none" stroke="#dcb07c" stroke-width="8" stroke-dasharray="8,8" stroke-linecap="round"/>
+          
+          <!-- Bridges over River -->
+          <path d="M 660 142 L 700 154" fill="none" stroke="#8d5a36" stroke-width="32" stroke-linecap="square"/>
+          <path d="M 660 142 L 700 154" fill="none" stroke="#f1e0cf" stroke-width="20" stroke-linecap="square"/>
+
+          <path d="M 160 262 L 200 274" fill="none" stroke="#8d5a36" stroke-width="32" stroke-linecap="square"/>
+          <path d="M 160 262 L 200 274" fill="none" stroke="#f1e0cf" stroke-width="20" stroke-linecap="square"/>
+          
+          <!-- Trees -->
+          <g class="map-tree" transform="translate(260, 60)">
+            <rect x="-4" y="-5" width="8" height="20" fill="#5c3818" rx="2"/>
+            <circle cx="0" cy="-12" r="16" fill="#2b8237"/>
+            <circle cx="4" cy="-15" r="11" fill="#389e45"/>
+          </g>
+          <g class="map-tree" transform="translate(560, 60)">
+            <rect x="-5" y="-5" width="10" height="25" fill="#5c3818" rx="2"/>
+            <circle cx="0" cy="-15" r="20" fill="#2b8237"/>
+            <circle cx="-6" cy="-20" r="14" fill="#389e45"/>
+            <circle cx="-8" cy="-12" r="5" fill="#ffeb3b"/>
+          </g>
+          <g class="map-tree" transform="translate(880, 240)">
+            <rect x="-5" y="-5" width="10" height="25" fill="#5c3818" rx="2"/>
+            <circle cx="0" cy="-15" r="22" fill="#1e5e26"/>
+            <circle cx="6" cy="-22" r="15" fill="#2b8237"/>
+          </g>
+          
+          <!-- Bushes -->
+          <g class="map-bush" transform="translate(180, 180)">
+            <ellipse cx="-10" cy="0" rx="14" ry="10" fill="#389e45"/>
+            <ellipse cx="10" cy="0" rx="14" ry="10" fill="#389e45"/>
+            <ellipse cx="0" cy="-6" rx="16" ry="12" fill="#4cb057"/>
+          </g>
+          
+          <!-- Flowers -->
+          <g class="map-flower" transform="translate(140, 150)"><circle cx="0" cy="0" r="3" fill="#ffeb3b"/><circle cx="-5" cy="0" r="3.5" fill="#fff"/><circle cx="5" cy="0" r="3.5" fill="#fff"/><circle cx="0" cy="-5" r="3.5" fill="#fff"/><circle cx="0" cy="5" r="3.5" fill="#fff"/></g>
+          <g class="map-flower" transform="translate(490, 170)"><circle cx="0" cy="0" r="3" fill="#ff9800"/><circle cx="-5" cy="0" r="3.5" fill="#ffeb3b"/><circle cx="5" cy="0" r="3.5" fill="#ffeb3b"/><circle cx="0" cy="-5" r="3.5" fill="#ffeb3b"/><circle cx="0" cy="5" r="3.5" fill="#ffeb3b"/></g>
+        </g>
+      </svg>
+      
+      <!-- Nodes -->
+      <!-- Sonic speedy nodes -->
+      <div class="map-node" id="node-speedy" data-zone="speedy" style="left: 100px; top: 210px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-speedy"></div>
+        </div>
+        <div class="node-label">Speedy 1</div>
+        <div class="node-stars-summary" id="stars-speedy"></div>
+      </div>
+      <div class="map-node small-node" id="node-speedy_2" data-zone="speedy_2" style="left: 220px; top: 240px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-speedy_2"></div>
+        </div>
+        <div class="node-label">Speedy 2</div>
+        <div class="node-stars-summary" id="stars-speedy_2"></div>
+      </div>
+      <div class="map-node small-node" id="node-speedy_3" data-zone="speedy_3" style="left: 340px; top: 210px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-speedy_3"></div>
+        </div>
+        <div class="node-label">Speedy 3</div>
+        <div class="node-stars-summary" id="stars-speedy_3"></div>
+      </div>
+      <div class="map-node small-node" id="node-speedy_4" data-zone="speedy_4" style="left: 460px; top: 240px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-speedy_4"></div>
+        </div>
+        <div class="node-label">Speedy 4</div>
+        <div class="node-stars-summary" id="stars-speedy_4"></div>
+      </div>
+      <div class="map-node small-node" id="node-speedy_5" data-zone="speedy_5" style="left: 580px; top: 210px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-speedy_5"></div>
+        </div>
+        <div class="node-label">Speedy 5</div>
+        <div class="node-stars-summary" id="stars-speedy_5"></div>
+      </div>
+      
+      <!-- Mario mushroom nodes -->
+      <div class="map-node" id="node-mushroom" data-zone="mushroom" style="left: 760px; top: 300px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-mushroom"></div>
+        </div>
+        <div class="node-label">Mushroom 1</div>
+        <div class="node-stars-summary" id="stars-mushroom"></div>
+      </div>
+      <div class="map-node small-node" id="node-mushroom_2" data-zone="mushroom_2" style="left: 640px; top: 340px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-mushroom_2"></div>
+        </div>
+        <div class="node-label">Mushroom 2</div>
+        <div class="node-stars-summary" id="stars-mushroom_2"></div>
+      </div>
+      <div class="map-node small-node" id="node-mushroom_3" data-zone="mushroom_3" style="left: 520px; top: 300px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-mushroom_3"></div>
+        </div>
+        <div class="node-label">Mushroom 3</div>
+        <div class="node-stars-summary" id="stars-mushroom_3"></div>
+      </div>
+      <div class="map-node small-node" id="node-mushroom_4" data-zone="mushroom_4" style="left: 400px; top: 340px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-mushroom_4"></div>
+        </div>
+        <div class="node-label">Mushroom 4</div>
+        <div class="node-stars-summary" id="stars-mushroom_4"></div>
+      </div>
+      <div class="map-node small-node" id="node-mushroom_5" data-zone="mushroom_5" style="left: 280px; top: 300px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-mushroom_5"></div>
+        </div>
+        <div class="node-label">Mushroom 5</div>
+        <div class="node-stars-summary" id="stars-mushroom_5"></div>
+      </div>
+      
+      <!-- Spidey web nodes -->
+      <div class="map-node boss-node" id="node-web" data-zone="web" style="left: 110px; top: 450px;">
+        <div class="node-island-boss-wrapper">
+          <div class="boss-flagpole">
+            <div class="boss-flag">😈</div>
+          </div>
+          <div class="node-island">
+            <div class="node-hero-face" id="face-web"></div>
+          </div>
+        </div>
+        <div class="node-label">Web City 1</div>
+        <div class="node-stars-summary" id="stars-web"></div>
+      </div>
+      <div class="map-node small-node" id="node-web_2" data-zone="web_2" style="left: 230px; top: 490px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-web_2"></div>
+        </div>
+        <div class="node-label">Web City 2</div>
+        <div class="node-stars-summary" id="stars-web_2"></div>
+      </div>
+      <div class="map-node small-node" id="node-web_3" data-zone="web_3" style="left: 350px; top: 450px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-web_3"></div>
+        </div>
+        <div class="node-label">Web City 3</div>
+        <div class="node-stars-summary" id="stars-web_3"></div>
+      </div>
+      <div class="map-node small-node" id="node-web_4" data-zone="web_4" style="left: 470px; top: 490px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-web_4"></div>
+        </div>
+        <div class="node-label">Web City 4</div>
+        <div class="node-stars-summary" id="stars-web_4"></div>
+      </div>
+      <div class="map-node small-node" id="node-web_5" data-zone="web_5" style="left: 590px; top: 450px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-web_5"></div>
+        </div>
+        <div class="node-label">Web City 5</div>
+        <div class="node-stars-summary" id="stars-web_5"></div>
+      </div>
+      
+      <!-- Coming Soon Node -->
+      <div class="map-node incoming-node" style="left: 730px; top: 480px;">
+        <div class="node-island-incoming">
+          <div class="incoming-question">?</div>
+        </div>
+        <div class="node-label">Coming Soon!</div>
+      </div>
+      
+      <!-- Map Tooltip -->
+      <div class="map-tooltip" id="map-tooltip">
+        <div class="tooltip-arrow"></div>
+        <div class="tooltip-content" id="tooltip-content"></div>
+      </div>
+    </div>
+  </div>
+  
+  <p class="total-stars" id="total-stars"></p>
+  
+  <div class="map-actions">
+    <button id="btn-history" class="big-btn alt small">Score history</button>
+    <button id="btn-reset-stars" class="big-btn alt small reset-btn">Reset Stars</button>
+  </div>
+</section>
+
+<!-- History screen -->
+<section id="screen-history" class="screen">
+  <h2 class="map-title">Score history</h2>
+  <p class="history-note">Best score of each day, for every world</p>
+  <div class="difficulty-row" id="history-difficulty-row"></div>
+  <div class="history-wrap" id="history-wrap"></div>
+  <button id="btn-history-back" class="big-btn alt">World map</button>
+</section>
+
+<!-- Game screen -->
+<section id="screen-game" class="screen">
+  <header class="game-header">
+    <button id="btn-back" class="icon-btn" aria-label="Back to map">&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button id="btn-replay" class="icon-btn" aria-label="Hear the question again">&#128266;</button>
+  </header>
+  <div class="stage">
+    <div class="game-char" id="game-char"></div>
+    <div class="speech-bubble">
+      <p class="question-text" id="question-text"></p>
+      <p class="equation" id="equation"></p>
+    </div>
+  </div>
+  <div class="objects" id="objects"></div>
+  <div class="answers" id="answers"></div>
+  <div class="action-scene" id="action-scene"></div>
+</section>
+
+<!-- Level complete screen -->
+<section id="screen-complete" class="screen">
+  <h2 class="complete-title" id="complete-title"></h2>
+  <div class="complete-char" id="complete-char"></div>
+  <div class="star-row" id="star-row"></div>
+  <p class="level-score" id="level-score"></p>
+  <p class="complete-msg" id="complete-msg"></p>
+  <div class="complete-btns">
+    <button id="btn-again" class="big-btn">Play again</button>
+    <button id="btn-map" class="big-btn alt">World map</button>
+  </div>
+</section>
+
+<script src="game.js"></script>
+</body>
+</html>

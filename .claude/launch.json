@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mathgame",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "serve", "-l", "3010", "."],
+      "port": 3010
+    }
+  ]
+}
