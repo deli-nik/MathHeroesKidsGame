@@ -62,6 +62,7 @@ body {
 .title-chars svg { width: clamp(90px, 18vw, 140px); height: auto; animation: float 2.5s ease-in-out infinite; }
 .title-chars svg:nth-child(2) { animation-delay: 0.4s; }
 .title-chars svg:nth-child(3) { animation-delay: 0.8s; }
+.title-chars svg:nth-child(4) { animation-delay: 1.2s; }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
@@ -88,7 +89,7 @@ body {
 
 .map-board-wrapper {
   width: 100%;
-  max-width: 960px;
+  max-width: 1004px;
   overflow-x: auto;
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
@@ -112,7 +113,7 @@ body {
 .map-board {
   position: relative;
   width: 1000px;
-  height: 650px;
+  height: 780px;
   background-color: #55b05a;
   background-image:
     linear-gradient(45deg, #4da152 25%, transparent 25%, transparent 75%, #4da152 75%, #4da152),
@@ -275,6 +276,28 @@ body {
   100% { box-shadow: 0 0 22px rgba(255, 51, 102, 0.9), 0 6px 0 #4527a0; }
 }
 
+/* Boss Stage - Hallownest */
+.hollow-boss .node-island {
+  background: radial-gradient(#6e84a8, #2c3a55);
+  border-color: #9fd8ef;
+  animation: hollowPulse 2s ease-in-out infinite alternate;
+}
+.hollow-boss.active .node-island {
+  border-color: #ffd23f;
+  animation: none;
+  box-shadow: 0 12px 0 #1c2538, 0 0 25px rgba(255, 210, 63, 0.8), 0 16px 16px rgba(0,0,0,0.22);
+}
+.hollow-boss:hover .node-island {
+  box-shadow: 0 10px 0 #1c2538, 0 14px 14px rgba(0,0,0,0.22);
+}
+.hollow-boss .boss-flag {
+  border-color: #9fd8ef;
+}
+@keyframes hollowPulse {
+  0% { box-shadow: 0 0 8px rgba(159, 216, 239, 0.4), 0 6px 0 #1c2538; }
+  100% { box-shadow: 0 0 22px rgba(159, 216, 239, 0.9), 0 6px 0 #1c2538; }
+}
+
 .node-island-boss-wrapper {
   position: relative;
 }
@@ -367,7 +390,7 @@ body {
 
 /* Map Tooltip */
 .map-tooltip {
-  position: absolute;
+  position: fixed;
   z-index: 100;
   transform: translate(-50%, -100%);
   opacity: 0;
@@ -403,6 +426,19 @@ body {
 }
 .boss-node .tooltip-content {
   border-color: #ff3366;
+}
+.tooltip-face {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+.tooltip-face svg {
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.18));
+}
+.tooltip-face.locked svg {
+  filter: grayscale(0.85) opacity(0.7);
 }
 .tooltip-title {
   font-size: 18px;
@@ -539,6 +575,7 @@ body {
 #screen-game.theme-speedy { background: linear-gradient(#8ed0ff, #d8f2ff 50%, #7fd47f); }
 #screen-game.theme-mushroom { background: linear-gradient(#ffd9a0, #fff3dd 50%, #f4a8a8); }
 #screen-game.theme-web { background: linear-gradient(#b9a8f0, #e6dffc 50%, #9fb8e8); }
+#screen-game.theme-hollow { background: linear-gradient(#8fa6c4, #dde8f4 50%, #7e93b3); }
 
 .game-header {
   width: 100%;
@@ -821,6 +858,15 @@ body {
   background-repeat: no-repeat;
   animation: none;
 }
+.scene-hollow .hills {
+  background-image:
+    radial-gradient(closest-side at 70px 130px, #46557a 98%, transparent 100%),
+    radial-gradient(closest-side at 200px 150px, #38456a 98%, transparent 100%),
+    radial-gradient(circle at 130px 60px, rgba(190, 215, 255, 0.8) 3px, transparent 4px),
+    radial-gradient(circle at 240px 90px, rgba(190, 215, 255, 0.7) 2.5px, transparent 4px);
+  background-size: 290px 180px;
+  animation: none;
+}
 @keyframes hillScroll { to { background-position-x: -280px; } }
 
 .action-scene .ground {
@@ -845,6 +891,12 @@ body {
     repeating-linear-gradient(90deg, #f5d442 0 26px, transparent 26px 52px) 0 20px / 52px 5px no-repeat,
     #44445a;
   border-top: 4px solid #2e2e40;
+}
+.scene-hollow .ground {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 40px, rgba(0,0,0,0.28) 40px 43px),
+    repeating-linear-gradient(0deg, #4a5570 0 22px, #353f58 22px 25px);
+  border-top: 4px solid #9fc4e8;
 }
 @keyframes groundScroll { to { background-position-x: -72px; } }
 .action-scene.scroll-fast .ground { animation-duration: 0.4s; }
@@ -985,6 +1037,34 @@ body {
   width: 86px;
   transition: bottom 0.8s ease;
   z-index: 3;
+}
+
+.actor.hornet {
+  left: 105%;
+  bottom: 74px;
+  width: 84px;
+  transition: left 1.05s ease-in-out;
+  animation: hoverBob 1.4s ease-in-out infinite;
+  z-index: 4;
+}
+.actor.hornet.flick svg { animation: hornetFlick 0.3s ease; }
+@keyframes hornetFlick {
+  0%, 100% { transform: rotate(0) translateY(0); }
+  50% { transform: rotate(-10deg) translateY(6px); }
+}
+
+.actor.grub {
+  left: 172px;
+  bottom: -95px;
+  width: 60px;
+  transition: bottom 0.7s ease;
+  z-index: 3;
+}
+.actor.grub.wiggle svg { animation: grubWiggle 0.35s ease; }
+@keyframes grubWiggle {
+  0%, 100% { transform: rotate(0); }
+  30% { transform: rotate(-8deg); }
+  70% { transform: rotate(8deg); }
 }
 
 .actor.yoshi {

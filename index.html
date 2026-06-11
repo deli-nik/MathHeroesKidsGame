@@ -22,7 +22,7 @@
   <div class="difficulty-row" id="difficulty-row"></div>
   <div class="map-board-wrapper">
     <div class="map-board" id="map-board">
-      <svg class="map-svg" viewBox="0 0 1000 650" preserveAspectRatio="xMidYMid slice">
+      <svg class="map-svg" viewBox="0 0 1000 780" preserveAspectRatio="xMidYMid slice">
         <g transform="translate(0, 100)">
           <!-- River -->
           <path d="M 680 -20 C 700 80, 660 130, 680 170 C 700 210, 350 210, 280 230 C 210 250, 160 250, 180 300 C 200 350, 160 480, 180 570" fill="none" stroke="#5ccbf5" stroke-width="26" stroke-linecap="round"/>
@@ -32,8 +32,12 @@
           <path class="map-path-shadow" d="M 50 110 L 100 110 Q 160 125 220 140 Q 280 125 340 110 Q 400 125 460 140 Q 520 125 580 110 C 660 90 730 140 760 200 Q 700 220 640 240 Q 580 220 520 200 Q 460 220 400 240 Q 340 220 280 200 C 190 180 120 280 110 350 Q 170 370 230 390 Q 290 370 350 350 Q 410 370 470 390 Q 530 370 590 350 C 650 330 700 365 730 380 L 850 380" fill="none" stroke="#75471d" stroke-width="24" stroke-linecap="round"/>
           <path class="map-path-body" d="M 50 110 L 100 110 Q 160 125 220 140 Q 280 125 340 110 Q 400 125 460 140 Q 520 125 580 110 C 660 90 730 140 760 200 Q 700 220 640 240 Q 580 220 520 200 Q 460 220 400 240 Q 340 220 280 200 C 190 180 120 280 110 350 Q 170 370 230 390 Q 290 370 350 350 Q 410 370 470 390 Q 530 370 590 350 C 650 330 700 365 730 380 L 850 380" fill="none" stroke="#dcb07c" stroke-width="14" stroke-linecap="round"/>
           
+          <!-- Hallownest Path (4th row) -->
+          <path class="map-path-shadow" d="M 850 380 C 920 400 925 470 865 505 Q 800 535 730 520 Q 670 545 610 555 Q 550 545 490 520 Q 430 545 370 555 C 335 560 310 558 285 553" fill="none" stroke="#75471d" stroke-width="24" stroke-linecap="round"/>
+          <path class="map-path-body" d="M 850 380 C 920 400 925 470 865 505 Q 800 535 730 520 Q 670 545 610 555 Q 550 545 490 520 Q 430 545 370 555 C 335 560 310 558 285 553" fill="none" stroke="#dcb07c" stroke-width="14" stroke-linecap="round"/>
+
           <!-- Dotted Continuation Path -->
-          <path class="map-path-dotted" d="M 850 380 C 890 380 920 380 970 380" fill="none" stroke="#dcb07c" stroke-width="8" stroke-dasharray="8,8" stroke-linecap="round"/>
+          <path class="map-path-dotted" d="M 285 553 C 240 548 190 552 140 550" fill="none" stroke="#dcb07c" stroke-width="8" stroke-dasharray="8,8" stroke-linecap="round"/>
           
           <!-- Bridges over River -->
           <path d="M 660 142 L 700 154" fill="none" stroke="#8d5a36" stroke-width="32" stroke-linecap="square"/>
@@ -190,22 +194,65 @@
         <div class="node-stars-summary" id="stars-web_5"></div>
       </div>
       
+      <!-- Hollow Knight Hallownest nodes -->
+      <div class="map-node boss-node hollow-boss" id="node-hollow" data-zone="hollow" style="left: 850px; top: 480px;">
+        <div class="node-island-boss-wrapper">
+          <div class="boss-flagpole">
+            <div class="boss-flag">🪲</div>
+          </div>
+          <div class="node-island">
+            <div class="node-hero-face" id="face-hollow"></div>
+          </div>
+        </div>
+        <div class="node-label">Hallownest 1</div>
+        <div class="node-stars-summary" id="stars-hollow"></div>
+      </div>
+      <div class="map-node small-node" id="node-hollow_2" data-zone="hollow_2" style="left: 730px; top: 620px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-hollow_2"></div>
+        </div>
+        <div class="node-label">Hallownest 2</div>
+        <div class="node-stars-summary" id="stars-hollow_2"></div>
+      </div>
+      <div class="map-node small-node" id="node-hollow_3" data-zone="hollow_3" style="left: 610px; top: 660px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-hollow_3"></div>
+        </div>
+        <div class="node-label">Hallownest 3</div>
+        <div class="node-stars-summary" id="stars-hollow_3"></div>
+      </div>
+      <div class="map-node small-node" id="node-hollow_4" data-zone="hollow_4" style="left: 490px; top: 620px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-hollow_4"></div>
+        </div>
+        <div class="node-label">Hallownest 4</div>
+        <div class="node-stars-summary" id="stars-hollow_4"></div>
+      </div>
+      <div class="map-node small-node" id="node-hollow_5" data-zone="hollow_5" style="left: 370px; top: 660px;">
+        <div class="node-island">
+          <div class="node-hero-face" id="face-hollow_5"></div>
+        </div>
+        <div class="node-label">Hallownest 5</div>
+        <div class="node-stars-summary" id="stars-hollow_5"></div>
+      </div>
+
       <!-- Coming Soon Node -->
-      <div class="map-node incoming-node" style="left: 730px; top: 480px;">
+      <div class="map-node incoming-node" style="left: 200px; top: 640px;">
         <div class="node-island-incoming">
           <div class="incoming-question">?</div>
         </div>
         <div class="node-label">Coming Soon!</div>
       </div>
       
-      <!-- Map Tooltip -->
-      <div class="map-tooltip" id="map-tooltip">
-        <div class="tooltip-arrow"></div>
-        <div class="tooltip-content" id="tooltip-content"></div>
-      </div>
     </div>
   </div>
-  
+
+  <!-- Map Tooltip (outside the board so it never gets clipped) -->
+  <div class="map-tooltip" id="map-tooltip">
+    <div class="tooltip-arrow"></div>
+    <div class="tooltip-content" id="tooltip-content"></div>
+  </div>
+
   <p class="total-stars" id="total-stars"></p>
   
   <div class="map-actions">
@@ -255,6 +302,20 @@
   </div>
 </section>
 
-<script src="game.js"></script>
+<!-- Plain scripts (no modules) so the game keeps working when index.html is
+     opened directly from disk. Order matters: helpers and data first, then
+     systems, then screens, then wiring. -->
+<script src="js/utils.js"></script>
+<script src="js/config.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/state.js"></script>
+<script src="js/art.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/map.js"></script>
+<script src="js/gameplay.js"></script>
+<script src="js/history.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

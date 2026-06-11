@@ -27,6 +27,10 @@ Join your favorite heroes on a winding adventure map, solve equations, collect i
 ### 🕷️ Spidey - Web City (Add & Subtract Mix)
 * **Goal**: Swing into the boss world! Use webs to catch floating balloons or pop them in a mix of addition and subtraction challenges.
 
+### 🪲 Hollow Knight - Hallownest (Add & Subtract Mix)
+* **Goal**: Earn stars in Web City to unlock the caverns of Hallownest! Count geos as the Knight slashes beetles and meets friendly Grubs.
+* **Friends**: Hornet flies in to toss geo, Grubs pop up from the ground with gifts, and Sly runs a shop stall for spending challenges.
+
 ---
 
 ## 🌟 Key Features
@@ -36,6 +40,26 @@ Join your favorite heroes on a winding adventure map, solve equations, collect i
 * **Sound Effects & Voice**: Features retro game sound effects and full text-to-speech voiceovers that read the math word problems out loud!
 * **Score History**: Track your daily high scores for each character and difficulty setting.
 * **Reset Progress**: Want to try for a perfect run? Reset your stars at any time to relock levels and start fresh.
+
+---
+
+## 🧩 Project Structure
+
+* `index.html` — all screens (title, world map, game, score history, level complete)
+* `style.css` — styling, themes, and animations
+* `js/` — game code, split into focused plain scripts loaded in dependency order (no build step, works straight from disk):
+  * `utils.js` — small shared helpers (DOM, random, number words)
+  * `config.js` — difficulties, zones, unlock and tuning constants
+  * `audio.js` — text-to-speech and sound effects
+  * `state.js` — save data, level progression, daily score records
+  * `art.js` — all SVG art (hero faces, scene actors, items)
+  * `scene.js` — the animated action scene (`SceneFX`)
+  * `questions.js` — word-problem sentences and question generation
+  * `ui.js` — screen switching, map scaling, confetti
+  * `map.js` — world map, tooltips, level locking
+  * `gameplay.js` — question flow, answering, level completion
+  * `history.js` — score history screen
+  * `main.js` — button wiring and startup
 
 ---
 
