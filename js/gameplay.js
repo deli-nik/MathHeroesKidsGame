@@ -57,7 +57,7 @@ function renderAnswers(q) {
   q.choices.forEach((c, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="key">${i + 1}</span><span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
+    btn.innerHTML = `<span class="key" aria-hidden="true">${i + 1}</span><span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
     btn.onclick = () => onAnswer(btn, c);
     wrap.appendChild(btn);
   });
