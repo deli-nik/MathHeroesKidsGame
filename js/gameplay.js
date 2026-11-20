@@ -54,13 +54,13 @@ async function nextQuestion() {
 function renderAnswers(q) {
   const wrap = $('#answers');
   wrap.innerHTML = '';
-  for (const c of q.choices) {
+  q.choices.forEach((c, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
+    btn.innerHTML = `<span class="key" aria-hidden="true">${i + 1}</span><span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
     btn.onclick = () => onAnswer(btn, c);
     wrap.appendChild(btn);
-  }
+  });
 }
 
 /* ---------- scene animation ---------- */
@@ -270,6 +270,23 @@ function advance() {
     nextQuestion();
   }
 }
+
+/* Keys 1-4 pick the answer button in that position (top row or numeric keypad). */
+function onAnswerKey(e) {
+  if (!['1', '2', '3', '4'].includes(e.key)) return;
+  if (e.ctrlKey || e.altKey || e.metaKey || e.repeat) return;
+  if (!$('#screen-game').classList.contains('active')) return;
+  if (!session || !session.q || session.answered || session.busy) return;
+
+  const index = Number(e.key) - 1;
+  const btn = document.querySelectorAll('#answers .answer-btn')[index];
+  if (!btn || btn.disabled) return;
+
+  e.preventDefault();
+  onAnswer(btn, session.q.choices[index]);
+}
+
+document.addEventListener('keydown', onAnswerKey);
 
 /* ---------- level complete ---------- */
 
