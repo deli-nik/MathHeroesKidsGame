@@ -44,6 +44,13 @@ Join your favorite heroes on a winding adventure map, solve equations, collect i
 
 ---
 
+## 📚 Documentation
+
+* [Worlds guide](docs/worlds.md): the four worlds, their heroes, levels and friends.
+* [Parents' guide](docs/parents-guide.md): difficulty, stars, unlocking and resetting progress.
+
+---
+
 ## 🧩 Project Structure
 
 * `index.html` — all screens (title, world map, game, score history, level complete)
