@@ -68,3 +68,17 @@ Join your favorite heroes on a winding adventure map, solve equations, collect i
 1. Download or clone this repository.
 2. Open `index.html` in any web browser (works great on desktops, tablets, and phones!).
 3. Click **Play!** and start your math adventure!
+
+### 🌐 Running from a local server (optional)
+
+Only needed if the game does not load when you open `index.html` directly. Run one of these commands from the project folder, then open the address it prints (usually `http://localhost:8000` for Python).
+
+**Option A: Python**
+```bash
+python -m http.server
+```
+
+**Option B: Node.js** (Node.js must be installed)
+```bash
+npx serve
+```
