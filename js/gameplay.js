@@ -271,6 +271,23 @@ function advance() {
   }
 }
 
+/* Keys 1-4 pick the answer button in that position (top row or numeric keypad). */
+function onAnswerKey(e) {
+  if (!['1', '2', '3', '4'].includes(e.key)) return;
+  if (e.ctrlKey || e.altKey || e.metaKey || e.repeat) return;
+  if (!$('#screen-game').classList.contains('active')) return;
+  if (!session || !session.q || session.answered || session.busy) return;
+
+  const index = Number(e.key) - 1;
+  const btn = document.querySelectorAll('#answers .answer-btn')[index];
+  if (!btn || btn.disabled) return;
+
+  e.preventDefault();
+  onAnswer(btn, session.q.choices[index]);
+}
+
+document.addEventListener('keydown', onAnswerKey);
+
 /* ---------- level complete ---------- */
 
 function finishLevel() {
