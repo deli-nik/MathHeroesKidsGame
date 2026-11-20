@@ -12,6 +12,7 @@ Join your favorite heroes on a winding adventure map, solve equations, collect i
 2. **Follow the Path**: Travel along a winding serpentine map board, starting with Sonic and Mario.
 3. **Earn Stars**: Correct answers score points and earn stars (up to 3 per level). Beat the current level to unlock the next one!
 4. **Unlock the Boss World**: Gather **stars** from Sonic and Mario's worlds to unlock Spidey's boss levels in Web City!
+5. **Answer with the Keys**: Press **1**, **2**, **3**, or **4** on your keyboard to pick an answer. Each answer button shows its key as a small badge.
 
 ---
 
