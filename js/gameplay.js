@@ -54,13 +54,13 @@ async function nextQuestion() {
 function renderAnswers(q) {
   const wrap = $('#answers');
   wrap.innerHTML = '';
-  for (const c of q.choices) {
+  q.choices.forEach((c, i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.innerHTML = `<span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
+    btn.innerHTML = `<span class="key">${i + 1}</span><span class="digit">${c}</span><span class="word">${numWord(c)}</span>`;
     btn.onclick = () => onAnswer(btn, c);
     wrap.appendChild(btn);
-  }
+  });
 }
 
 /* ---------- scene animation ---------- */
